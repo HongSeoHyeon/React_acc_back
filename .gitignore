@@ -1,0 +1,13 @@
+
+
+# production
+/build
+/.gradle
+/logs
+/bin
+/out
+
+# intelliJ
+/.idea
+
+labatory.log
