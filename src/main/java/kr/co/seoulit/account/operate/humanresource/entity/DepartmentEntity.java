@@ -1,6 +1,5 @@
 package kr.co.seoulit.account.operate.humanresource.entity;
 
-import kr.co.seoulit.account.budget.formulation.entity.BudgetProductPK;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

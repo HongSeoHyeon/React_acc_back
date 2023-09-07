@@ -1,29 +1,24 @@
 package kr.co.seoulit.account.budget.formulation.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.domain.Persistable;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "BUDGET")
-@Data
-@IdClass(BudgetProductPK.class)
+@Getter
+@Setter
+//@IdClass(BudgetEntityPK.class)
 public class BudgetEntity implements Serializable {
 
     @Id
-    private String accountInnerCode;
-    @Id
-    private String accountPeriodNo;
-    @Id
-    private String budgetingCode;
-    @Id
-    private String deptCode;
-    @Id
-    private String workplaceCode;
+    @EmbeddedId
+    private BudgetEntityPK budgetEntityPK;
+
+
     @Column(name = "M1_BUDGET")
     private String m1Budget;
     @Column(name = "M2_BUDGET")

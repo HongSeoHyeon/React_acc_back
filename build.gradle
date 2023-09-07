@@ -17,7 +17,7 @@ configurations.all {
     exclude module: 'jmxtools'
     exclude module: 'jmxri'
     }
-    
+
 repositories {
    mavenCentral()
 }
@@ -107,6 +107,17 @@ dependencies {
 
     //jpa 사용 하기위해 선언
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // mapStruct
+    implementation "org.mapstruct:mapstruct:1.5.5.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.5.5.Final"
+
+    //  redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+
+    //	springdoc (Swagger)
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
 }
 
 tasks.named('test') {
