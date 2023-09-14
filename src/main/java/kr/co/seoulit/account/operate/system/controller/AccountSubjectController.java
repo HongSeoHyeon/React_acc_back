@@ -5,7 +5,9 @@ import java.util.HashMap;
 
 import kr.co.seoulit.account.operate.system.entity.AccountEntity;
 import kr.co.seoulit.account.operate.system.service.JpaAccountService;
+import kr.co.seoulit.account.operate.system.to.AccountDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -67,26 +69,43 @@ public class AccountSubjectController {
 
 	// 계정과목조회 JPA 구현완료.
 	@GetMapping("/parentaccountlist") // 계정과목조회
-	public HashMap<String, Object> getAccountList() {
+	public ResponseEntity<HashMap<String, ArrayList<AccountDTO>>> getAccountList() {
 		String accountInnerCode = "%-%";
 		String s = "0101-0250"; String v = "0101-1000";
 		ArrayList<String> parentAccountInnerCode = new ArrayList<String>();
 		parentAccountInnerCode.add(s); parentAccountInnerCode.add(v);
 
-		HashMap<String, Object> map = new HashMap<>();
-
 		System.out.println(jpaAccountService.findParentAccountList(accountInnerCode, parentAccountInnerCode));
 
-		ArrayList<AccountEntity> accountCodeList =  jpaAccountService.findParentAccountList(accountInnerCode, parentAccountInnerCode);
-		map.put("accountCodeList",accountCodeList);
-		return map;
+		ArrayList<AccountDTO> accountCodeList =  jpaAccountService.findParentAccountList(accountInnerCode, parentAccountInnerCode);
+		HashMap<String, ArrayList<AccountDTO>> map = new HashMap<>();
+
+		if(accountCodeList.isEmpty()){
+			return ResponseEntity.status(400).body(null);
+		} else {
+			map.put("accountCodeList", accountCodeList);
+			return ResponseEntity.ok(map);
+		}
 	}
 
 	@GetMapping("/detailaccountlist")
-	public ArrayList<AccountBean> findDetailAccountList(@RequestParam("code") String code) {
-		ArrayList<AccountBean> accountList = systemService.findDetailAccountList(code);
-		return accountList;
+	public ResponseEntity<HashMap<String, ArrayList<AccountDTO>>> findDetailAccountList(@RequestParam("code") String code) {
+		ArrayList<AccountDTO> accountDetailList = jpaAccountService.findDetailAccountList(code);
+		HashMap<String, ArrayList<AccountDTO>> map = new HashMap<>();
+
+		if (accountDetailList.isEmpty()) {
+			return ResponseEntity.status(400).body(null);
+		} else {
+			map.put("accountDetailList",accountDetailList);
+			return ResponseEntity.ok(map);
+		}
 	}
+
+//	@GetMapping("/detailaccountlist")
+//	public ArrayList<AccountBean> findDetailAccountList(@RequestParam("code") String code) {
+//		ArrayList<AccountBean> accountList = systemService.findDetailAccountList(code);
+//		return accountList;
+//	}
 
 	// JPA 구현 실패
 //	@GetMapping("/detailaccountlist")

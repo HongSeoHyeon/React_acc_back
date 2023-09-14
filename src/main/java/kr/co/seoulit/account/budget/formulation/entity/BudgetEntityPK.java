@@ -18,4 +18,5 @@ public class BudgetEntityPK implements Serializable {
     private String deptCode;
     private String workplaceCode;
 
+
 }

@@ -79,7 +79,7 @@ public class JournalController {
 //		String slipNo = ((JSONObject) jourData.get("jourData")).get("slipNo").toString();
 //		Object journalObj = ((JSONObject) jourData.get("jourData")).get("journalObj");
 //
-//		JSONArray journalObjs = JSONArray.fromObject(journalObj);
+//		JSONArray       journalObjs = JSONArray.fromObject(journalObj);
 //		System.out.println(journalObjs);//JSONArray까지 변환 시킴
 //
 //		ArrayList<JournalBean> journalBeanList = new ArrayList<>();

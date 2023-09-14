@@ -4,14 +4,17 @@ import kr.co.seoulit.account.posting.business.to.SlipBean;
 import kr.co.seoulit.account.sys.base.entity.PeriodEntity;
 import kr.co.seoulit.account.sys.base.service.BaseService;
 import kr.co.seoulit.account.sys.base.service.JpaPeriodService;
+import kr.co.seoulit.account.sys.base.to.PeriodDTO;
 import kr.co.seoulit.account.sys.base.to.PeriodNoBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -23,20 +26,27 @@ public class PeriodNoController {
 	@Autowired
 	private JpaPeriodService jpaPeriodService;
 
-	@GetMapping("/periodNoList")
-	public HashMap<String, Object> findPeriodNo() {
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("periodNoList", baseService.findPeriodNo());
-		return map;
-	}
-
-	// ====== JPA 구현 / PeriodNo조회 ======
 //	@GetMapping("/periodNoList")
 //	public HashMap<String, Object> findPeriodNo() {
 //		HashMap<String, Object> map = new HashMap<>();
-//		map.put("periodNoList", jpaPeriodService.findPeriodNo());
+//		map.put("periodNoList", baseService.findPeriodNo());
 //		return map;
 //	}
+
+	// ====== JPA 구현 / PeriodNo조회 ======
+	@GetMapping("/periodNoList")
+	public ResponseEntity<HashMap<String, Object>> findPeriodNo() {
+		HashMap<String, Object> map = new HashMap<>();
+
+		List<PeriodDTO> periodNoList = jpaPeriodService.findPeriodNo();
+
+		if (periodNoList.isEmpty()){
+			return ResponseEntity.status(400).body(null);
+		} else {
+			map.put("periodNoList", periodNoList);
+			return ResponseEntity.ok(map);
+		}
+	}
 
 //	@GetMapping("/tPeriodNoList")
 //	public PeriodNoBean findPeriodNo(@RequestParam("yearFirst") String yearFirst,
