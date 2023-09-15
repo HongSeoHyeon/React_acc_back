@@ -19,8 +19,8 @@ public class JpaTrialBalanceServiceImpl implements JpaTrialBalanceService {
     TrialbalanceMapStruct trialbalanceMapStruct = Mappers.getMapper(TrialbalanceMapStruct.class);
 
     @Override
-    public List<TotalTrialBalanceDTO> findTotalTrialBalance() {
-        List<TotalTriabalanceEntity> trialBalance = jpaTrialBalanceRepository.findTotalTriabal();
+    public List<TotalTrialBalanceDTO> findTotalTrialBalance(String accountPeriodNo, String callResult) {
+        List<TotalTriabalanceEntity> trialBalance = jpaTrialBalanceRepository.findTotalTriabal(accountPeriodNo, callResult);
         System.out.println("================ENTITY 변환 전 : "+trialBalance);
         List<TotalTrialBalanceDTO> result = new ArrayList<>();
         for(TotalTriabalanceEntity entity : trialBalance){

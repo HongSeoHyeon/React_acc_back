@@ -11,6 +11,6 @@ import java.util.ArrayList;
 public interface JpaTrialBalanceRepository extends CrudRepository<TotalTriabalanceEntity, String> {
 
     @Procedure(name = "TotalTriabalanceEntity.GetTriabalanceProcedure")
-    ArrayList<TotalTriabalanceEntity> findTotalTriabal();
+    ArrayList<TotalTriabalanceEntity> findTotalTriabal(String accountPeriodNo, String callResult);
 
 }

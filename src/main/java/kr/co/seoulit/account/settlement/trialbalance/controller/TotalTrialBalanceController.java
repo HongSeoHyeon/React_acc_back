@@ -2,8 +2,12 @@ package kr.co.seoulit.account.settlement.trialbalance.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import kr.co.seoulit.account.settlement.trialbalance.service.JpaTrialBalanceService;
+import kr.co.seoulit.account.settlement.trialbalance.to.TotalTrialBalanceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import kr.co.seoulit.account.posting.ledger.to.GeneralLedgerBean;
@@ -17,6 +21,7 @@ public class TotalTrialBalanceController {
 
 	@Autowired
 	private TrialBalanceService trialBalanceService;
+	private JpaTrialBalanceService jpaTrialBalanceService;
 
 //	@PostMapping("/totaltrialbalance")
 //	public HashMap<String, Object> finddoClosing(@RequestParam("accountPeriodNo") String accountPeriodNo,
@@ -73,19 +78,18 @@ public class TotalTrialBalanceController {
 	}
 
 	@GetMapping("/totaltrialbalance")
-	public HashMap<String, Object> findTotalTrialBalance(@RequestParam("accountPeriodNo") String accountPeriodNo,
-			@RequestParam("callResult") String callResult) {
+	public ResponseEntity<HashMap<String, Object>> findTotalTrialBalance(@RequestParam("accountPeriodNo") String accountPeriodNo,
+																		 @RequestParam("callResult") String callResult) {
 		HashMap<String, Object> map = new HashMap<>();
 		try {
-			HashMap<String, Object> totaltrialList = trialBalanceService.findTotalTrialBalance(accountPeriodNo,
-					callResult);
+			List<TotalTrialBalanceDTO> totaltrialList = jpaTrialBalanceService.findTotalTrialBalance(accountPeriodNo, callResult);
 			map.put("totaltrialList", totaltrialList);
 		} catch (Exception e2) {
 			map.put("errorCode", -1);
 			map.put("errorMsg", e2.getMessage());
 		}
 
-		return map;
+		return ResponseEntity.ok(map);
 	}
 
 	@PostMapping("/totaltrialbalancecancle")
