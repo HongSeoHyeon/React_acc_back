@@ -8,14 +8,14 @@ import kr.co.seoulit.account.settlement.trialbalance.to.TotalTrialBalanceDTO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-14T21:03:56+0900",
+    date = "2023-11-01T01:33:57+0900",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11.0.11 (Oracle Corporation)"
 )
 public class TrialbalanceMapStructImpl implements TrialbalanceMapStruct {
 
     @Override
-    public TotalTriabalanceEntity toEntity(TotalTrialBalanceDTO arg0) {
-        if ( arg0 == null ) {
+    public TotalTriabalanceEntity toEntity(TotalTrialBalanceDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
@@ -25,13 +25,13 @@ public class TrialbalanceMapStructImpl implements TrialbalanceMapStruct {
     }
 
     @Override
-    public ArrayList<TotalTriabalanceEntity> toEntity(ArrayList<TotalTrialBalanceDTO> arg0) {
-        if ( arg0 == null ) {
+    public ArrayList<TotalTriabalanceEntity> toEntity(ArrayList<TotalTrialBalanceDTO> dtos) {
+        if ( dtos == null ) {
             return null;
         }
 
         ArrayList<TotalTriabalanceEntity> arrayList = new ArrayList<TotalTriabalanceEntity>();
-        for ( TotalTrialBalanceDTO totalTrialBalanceDTO : arg0 ) {
+        for ( TotalTrialBalanceDTO totalTrialBalanceDTO : dtos ) {
             arrayList.add( toEntity( totalTrialBalanceDTO ) );
         }
 
@@ -39,13 +39,13 @@ public class TrialbalanceMapStructImpl implements TrialbalanceMapStruct {
     }
 
     @Override
-    public List<TotalTriabalanceEntity> toEntity(List<TotalTrialBalanceDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<TotalTriabalanceEntity> toEntity(List<TotalTrialBalanceDTO> dtos) {
+        if ( dtos == null ) {
             return null;
         }
 
-        List<TotalTriabalanceEntity> list = new ArrayList<TotalTriabalanceEntity>( arg0.size() );
-        for ( TotalTrialBalanceDTO totalTrialBalanceDTO : arg0 ) {
+        List<TotalTriabalanceEntity> list = new ArrayList<TotalTriabalanceEntity>( dtos.size() );
+        for ( TotalTrialBalanceDTO totalTrialBalanceDTO : dtos ) {
             list.add( toEntity( totalTrialBalanceDTO ) );
         }
 
@@ -53,8 +53,8 @@ public class TrialbalanceMapStructImpl implements TrialbalanceMapStruct {
     }
 
     @Override
-    public TotalTrialBalanceDTO toDto(TotalTriabalanceEntity arg0) {
-        if ( arg0 == null ) {
+    public TotalTrialBalanceDTO toDto(TotalTriabalanceEntity entity) {
+        if ( entity == null ) {
             return null;
         }
 
@@ -64,13 +64,13 @@ public class TrialbalanceMapStructImpl implements TrialbalanceMapStruct {
     }
 
     @Override
-    public List<TotalTrialBalanceDTO> toDto(List<TotalTriabalanceEntity> arg0) {
-        if ( arg0 == null ) {
+    public List<TotalTrialBalanceDTO> toDto(List<TotalTriabalanceEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
-        List<TotalTrialBalanceDTO> list = new ArrayList<TotalTrialBalanceDTO>( arg0.size() );
-        for ( TotalTriabalanceEntity totalTriabalanceEntity : arg0 ) {
+        List<TotalTrialBalanceDTO> list = new ArrayList<TotalTrialBalanceDTO>( entities.size() );
+        for ( TotalTriabalanceEntity totalTriabalanceEntity : entities ) {
             list.add( toDto( totalTriabalanceEntity ) );
         }
 
@@ -78,13 +78,13 @@ public class TrialbalanceMapStructImpl implements TrialbalanceMapStruct {
     }
 
     @Override
-    public ArrayList<TotalTrialBalanceDTO> toDto(ArrayList<TotalTriabalanceEntity> arg0) {
-        if ( arg0 == null ) {
+    public ArrayList<TotalTrialBalanceDTO> toDto(ArrayList<TotalTriabalanceEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
         ArrayList<TotalTrialBalanceDTO> arrayList = new ArrayList<TotalTrialBalanceDTO>();
-        for ( TotalTriabalanceEntity totalTriabalanceEntity : arg0 ) {
+        for ( TotalTriabalanceEntity totalTriabalanceEntity : entities ) {
             arrayList.add( toDto( totalTriabalanceEntity ) );
         }
 

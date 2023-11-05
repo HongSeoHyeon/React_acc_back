@@ -8,45 +8,45 @@ import kr.co.seoulit.account.operate.system.to.AccountDTO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-13T10:03:06+0900",
+    date = "2023-11-01T01:33:57+0900",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11.0.11 (Oracle Corporation)"
 )
 public class AccountMapStructImpl implements AccountMapStruct {
 
     @Override
-    public AccountEntity toEntity(AccountDTO arg0) {
-        if ( arg0 == null ) {
+    public AccountEntity toEntity(AccountDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         AccountEntity accountEntity = new AccountEntity();
 
-        accountEntity.setAccountInnerCode( arg0.getAccountInnerCode() );
-        accountEntity.setParentAccountInnerCode( arg0.getParentAccountInnerCode() );
-        accountEntity.setAccountCode( arg0.getAccountCode() );
-        accountEntity.setAccountCharacter( arg0.getAccountCharacter() );
-        accountEntity.setAccountName( arg0.getAccountName() );
-        accountEntity.setAccountDisplayNameWithCode( arg0.getAccountDisplayNameWithCode() );
-        accountEntity.setAccountDisplayName( arg0.getAccountDisplayName() );
-        accountEntity.setAccountDivision( arg0.getAccountDivision() );
-        accountEntity.setAccountUseCheck( arg0.getAccountUseCheck() );
-        accountEntity.setAccountDescription( arg0.getAccountDescription() );
-        accountEntity.setGroupCode( arg0.getGroupCode() );
-        accountEntity.setEditable( arg0.getEditable() );
-        accountEntity.setTarget( arg0.getTarget() );
-        accountEntity.setBudget( arg0.getBudget() );
+        accountEntity.setAccountInnerCode( dto.getAccountInnerCode() );
+        accountEntity.setParentAccountInnerCode( dto.getParentAccountInnerCode() );
+        accountEntity.setAccountCode( dto.getAccountCode() );
+        accountEntity.setAccountCharacter( dto.getAccountCharacter() );
+        accountEntity.setAccountName( dto.getAccountName() );
+        accountEntity.setAccountDisplayNameWithCode( dto.getAccountDisplayNameWithCode() );
+        accountEntity.setAccountDisplayName( dto.getAccountDisplayName() );
+        accountEntity.setAccountDivision( dto.getAccountDivision() );
+        accountEntity.setAccountUseCheck( dto.getAccountUseCheck() );
+        accountEntity.setAccountDescription( dto.getAccountDescription() );
+        accountEntity.setGroupCode( dto.getGroupCode() );
+        accountEntity.setEditable( dto.getEditable() );
+        accountEntity.setTarget( dto.getTarget() );
+        accountEntity.setBudget( dto.getBudget() );
 
         return accountEntity;
     }
 
     @Override
-    public ArrayList<AccountEntity> toEntity(ArrayList<AccountDTO> arg0) {
-        if ( arg0 == null ) {
+    public ArrayList<AccountEntity> toEntity(ArrayList<AccountDTO> dtos) {
+        if ( dtos == null ) {
             return null;
         }
 
         ArrayList<AccountEntity> arrayList = new ArrayList<AccountEntity>();
-        for ( AccountDTO accountDTO : arg0 ) {
+        for ( AccountDTO accountDTO : dtos ) {
             arrayList.add( toEntity( accountDTO ) );
         }
 
@@ -54,13 +54,13 @@ public class AccountMapStructImpl implements AccountMapStruct {
     }
 
     @Override
-    public List<AccountEntity> toEntity(List<AccountDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<AccountEntity> toEntity(List<AccountDTO> dtos) {
+        if ( dtos == null ) {
             return null;
         }
 
-        List<AccountEntity> list = new ArrayList<AccountEntity>( arg0.size() );
-        for ( AccountDTO accountDTO : arg0 ) {
+        List<AccountEntity> list = new ArrayList<AccountEntity>( dtos.size() );
+        for ( AccountDTO accountDTO : dtos ) {
             list.add( toEntity( accountDTO ) );
         }
 
@@ -68,39 +68,39 @@ public class AccountMapStructImpl implements AccountMapStruct {
     }
 
     @Override
-    public AccountDTO toDto(AccountEntity arg0) {
-        if ( arg0 == null ) {
+    public AccountDTO toDto(AccountEntity entity) {
+        if ( entity == null ) {
             return null;
         }
 
         AccountDTO accountDTO = new AccountDTO();
 
-        accountDTO.setAccountInnerCode( arg0.getAccountInnerCode() );
-        accountDTO.setParentAccountInnerCode( arg0.getParentAccountInnerCode() );
-        accountDTO.setAccountCode( arg0.getAccountCode() );
-        accountDTO.setAccountCharacter( arg0.getAccountCharacter() );
-        accountDTO.setAccountName( arg0.getAccountName() );
-        accountDTO.setAccountDisplayNameWithCode( arg0.getAccountDisplayNameWithCode() );
-        accountDTO.setAccountDisplayName( arg0.getAccountDisplayName() );
-        accountDTO.setAccountDivision( arg0.getAccountDivision() );
-        accountDTO.setAccountUseCheck( arg0.getAccountUseCheck() );
-        accountDTO.setAccountDescription( arg0.getAccountDescription() );
-        accountDTO.setGroupCode( arg0.getGroupCode() );
-        accountDTO.setEditable( arg0.getEditable() );
-        accountDTO.setTarget( arg0.getTarget() );
-        accountDTO.setBudget( arg0.getBudget() );
+        accountDTO.setAccountInnerCode( entity.getAccountInnerCode() );
+        accountDTO.setParentAccountInnerCode( entity.getParentAccountInnerCode() );
+        accountDTO.setAccountCode( entity.getAccountCode() );
+        accountDTO.setAccountCharacter( entity.getAccountCharacter() );
+        accountDTO.setAccountName( entity.getAccountName() );
+        accountDTO.setAccountDisplayNameWithCode( entity.getAccountDisplayNameWithCode() );
+        accountDTO.setAccountDisplayName( entity.getAccountDisplayName() );
+        accountDTO.setAccountDivision( entity.getAccountDivision() );
+        accountDTO.setAccountUseCheck( entity.getAccountUseCheck() );
+        accountDTO.setAccountDescription( entity.getAccountDescription() );
+        accountDTO.setGroupCode( entity.getGroupCode() );
+        accountDTO.setEditable( entity.getEditable() );
+        accountDTO.setTarget( entity.getTarget() );
+        accountDTO.setBudget( entity.getBudget() );
 
         return accountDTO;
     }
 
     @Override
-    public List<AccountDTO> toDto(List<AccountEntity> arg0) {
-        if ( arg0 == null ) {
+    public List<AccountDTO> toDto(List<AccountEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
-        List<AccountDTO> list = new ArrayList<AccountDTO>( arg0.size() );
-        for ( AccountEntity accountEntity : arg0 ) {
+        List<AccountDTO> list = new ArrayList<AccountDTO>( entities.size() );
+        for ( AccountEntity accountEntity : entities ) {
             list.add( toDto( accountEntity ) );
         }
 
@@ -108,13 +108,13 @@ public class AccountMapStructImpl implements AccountMapStruct {
     }
 
     @Override
-    public ArrayList<AccountDTO> toDto(ArrayList<AccountEntity> arg0) {
-        if ( arg0 == null ) {
+    public ArrayList<AccountDTO> toDto(ArrayList<AccountEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
         ArrayList<AccountDTO> arrayList = new ArrayList<AccountDTO>();
-        for ( AccountEntity accountEntity : arg0 ) {
+        for ( AccountEntity accountEntity : entities ) {
             arrayList.add( toDto( accountEntity ) );
         }
 

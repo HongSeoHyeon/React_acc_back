@@ -8,35 +8,35 @@ import kr.co.seoulit.account.sys.base.to.PeriodDTO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-14T15:34:08+0900",
+    date = "2023-11-01T01:33:56+0900",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11.0.11 (Oracle Corporation)"
 )
 public class PeriodMapStructImpl implements PeriodMapStruct {
 
     @Override
-    public PeriodEntity toEntity(PeriodDTO arg0) {
-        if ( arg0 == null ) {
+    public PeriodEntity toEntity(PeriodDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         PeriodEntity periodEntity = new PeriodEntity();
 
-        periodEntity.setAccountPeriodNo( arg0.getAccountPeriodNo() );
-        periodEntity.setPeriodStartDate( arg0.getPeriodStartDate() );
-        periodEntity.setPeriodEndDate( arg0.getPeriodEndDate() );
-        periodEntity.setWorkplaceCode( arg0.getWorkplaceCode() );
+        periodEntity.setAccountPeriodNo( dto.getAccountPeriodNo() );
+        periodEntity.setPeriodStartDate( dto.getPeriodStartDate() );
+        periodEntity.setPeriodEndDate( dto.getPeriodEndDate() );
+        periodEntity.setWorkplaceCode( dto.getWorkplaceCode() );
 
         return periodEntity;
     }
 
     @Override
-    public ArrayList<PeriodEntity> toEntity(ArrayList<PeriodDTO> arg0) {
-        if ( arg0 == null ) {
+    public ArrayList<PeriodEntity> toEntity(ArrayList<PeriodDTO> dtos) {
+        if ( dtos == null ) {
             return null;
         }
 
         ArrayList<PeriodEntity> arrayList = new ArrayList<PeriodEntity>();
-        for ( PeriodDTO periodDTO : arg0 ) {
+        for ( PeriodDTO periodDTO : dtos ) {
             arrayList.add( toEntity( periodDTO ) );
         }
 
@@ -44,13 +44,13 @@ public class PeriodMapStructImpl implements PeriodMapStruct {
     }
 
     @Override
-    public List<PeriodEntity> toEntity(List<PeriodDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<PeriodEntity> toEntity(List<PeriodDTO> dtos) {
+        if ( dtos == null ) {
             return null;
         }
 
-        List<PeriodEntity> list = new ArrayList<PeriodEntity>( arg0.size() );
-        for ( PeriodDTO periodDTO : arg0 ) {
+        List<PeriodEntity> list = new ArrayList<PeriodEntity>( dtos.size() );
+        for ( PeriodDTO periodDTO : dtos ) {
             list.add( toEntity( periodDTO ) );
         }
 
@@ -58,29 +58,29 @@ public class PeriodMapStructImpl implements PeriodMapStruct {
     }
 
     @Override
-    public PeriodDTO toDto(PeriodEntity arg0) {
-        if ( arg0 == null ) {
+    public PeriodDTO toDto(PeriodEntity entity) {
+        if ( entity == null ) {
             return null;
         }
 
         PeriodDTO periodDTO = new PeriodDTO();
 
-        periodDTO.setAccountPeriodNo( arg0.getAccountPeriodNo() );
-        periodDTO.setPeriodStartDate( arg0.getPeriodStartDate() );
-        periodDTO.setPeriodEndDate( arg0.getPeriodEndDate() );
-        periodDTO.setWorkplaceCode( arg0.getWorkplaceCode() );
+        periodDTO.setAccountPeriodNo( entity.getAccountPeriodNo() );
+        periodDTO.setPeriodStartDate( entity.getPeriodStartDate() );
+        periodDTO.setPeriodEndDate( entity.getPeriodEndDate() );
+        periodDTO.setWorkplaceCode( entity.getWorkplaceCode() );
 
         return periodDTO;
     }
 
     @Override
-    public List<PeriodDTO> toDto(List<PeriodEntity> arg0) {
-        if ( arg0 == null ) {
+    public List<PeriodDTO> toDto(List<PeriodEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
-        List<PeriodDTO> list = new ArrayList<PeriodDTO>( arg0.size() );
-        for ( PeriodEntity periodEntity : arg0 ) {
+        List<PeriodDTO> list = new ArrayList<PeriodDTO>( entities.size() );
+        for ( PeriodEntity periodEntity : entities ) {
             list.add( toDto( periodEntity ) );
         }
 
@@ -88,13 +88,13 @@ public class PeriodMapStructImpl implements PeriodMapStruct {
     }
 
     @Override
-    public ArrayList<PeriodDTO> toDto(ArrayList<PeriodEntity> arg0) {
-        if ( arg0 == null ) {
+    public ArrayList<PeriodDTO> toDto(ArrayList<PeriodEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
         ArrayList<PeriodDTO> arrayList = new ArrayList<PeriodDTO>();
-        for ( PeriodEntity periodEntity : arg0 ) {
+        for ( PeriodEntity periodEntity : entities ) {
             arrayList.add( toDto( periodEntity ) );
         }
 

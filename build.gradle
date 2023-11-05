@@ -49,7 +49,8 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
     implementation('org.slf4j:jcl-over-slf4j')
     implementation("org.slf4j:slf4j-api:1.7.7")
-    /*JDBC 연동을 위한 STARTER 를제공*/
+    /*JDBC 연동을 위ahwl
+    한 STARTER 를제공*/
 
     /*사이트메쉬+mybati+@Mapper설정*/
     implementation 'com.google.code.gson:gson:2.8.6'

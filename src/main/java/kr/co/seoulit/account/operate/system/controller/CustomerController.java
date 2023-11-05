@@ -2,7 +2,9 @@ package kr.co.seoulit.account.operate.system.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import kr.co.seoulit.account.operate.system.to.CustomerBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -40,13 +42,42 @@ public class CustomerController {
 
 	}
 
+	//거래처 조회
+//	@GetMapping("/customers")
+//	public HashMap<String , Object> getCustomerList(){
+//		HashMap<String , Object> map = new HashMap<>();
+//
+//		map.put("accountCustomerList" , systemService.getCustomerList());
+//
+//		return map;
+//	}
+
+	//거래처 조회
 	@GetMapping("/customers")
-	public HashMap<String , Object> getCustomerList(){
-		HashMap<String , Object> map = new HashMap<>();
+	public ArrayList<CustomerBean> getCustomerList(){
+		ArrayList<CustomerBean> accountCustomerList = systemService.getCustomerList();
+		return accountCustomerList;
+	}
 
-		map.put("accountCustomerList" , systemService.getCustomerList());
+	//거래처 삭제
+	@DeleteMapping("/deleteCustomers")
+	public void removeCustomerList(@RequestParam String customerCode){
+		System.out.println("컨트롤러 : " + customerCode);
+		systemService.removeCustomer(customerCode);
+	}
 
-		return map;
+	//거래처 추가
+	@PostMapping("/insertCustomers")
+	public void registerCustomerList(@RequestBody CustomerBean customerBean){
+		System.out.println("컨트롤러 : " + customerBean);
+		systemService.registerCustomer(customerBean);
+	}
+
+	//거래처 수정
+	@PutMapping("/updateCustomers")
+	public void updateCustomerList(@RequestBody CustomerBean customerBean){
+		System.out.println("컨트롤러 : " + customerBean);
+		systemService.updateCustomer(customerBean);
 	}
 
 	@GetMapping("/creditCard")
@@ -62,22 +93,20 @@ public class CustomerController {
 			ArrayList<DetailBusinessBean> detailBusinessList = systemService.findDetailBusiness(businessCode);
 
 	            return detailBusinessList;
-	
-
 	}
-	
+
 	@GetMapping("/registerworkplace")
 	public void registerworkPlace(@RequestParam String workplaceAddItems) {
-    
+
          JSONObject workplaceAddItemsAll = JSONObject.fromObject(workplaceAddItems);
          WorkplaceBean workplaceBean = BeanCreator.getInstance().create(workplaceAddItemsAll, WorkplaceBean.class);
-         
+
          systemService.registerWorkplace(workplaceBean); //insert
 
  }
     @GetMapping("/workplaceremoval")
     public void removeWorkplace(@RequestParam String codes) {
-    	
+
     	ArrayList<String> getCodes=null;
      	getCodes=new ArrayList<>();
 
@@ -86,7 +115,7 @@ public class CustomerController {
 				String code=(String)obj;
 				getCodes.add(code);
 			}
-         
+
 			systemService.removeWorkplace(getCodes); //delete
 
  }
@@ -99,21 +128,21 @@ public class CustomerController {
 
      return workplaceBean;
  }
-    
+
 	@PostMapping("/allworkplacelist")
 	public ArrayList<WorkplaceBean> findAllWorkplaceList() {
-		
+
 		ArrayList<WorkplaceBean> allWorkplaceList = new ArrayList<>();
 		allWorkplaceList = systemService.findAllWorkplaceList();
-			
+
 		return allWorkplaceList;
 
 	}
-	
+
 	@GetMapping("/approvalstatusmodification")
 	public void modifyApprovalStatus(@RequestParam String status,
 											 @RequestParam String codes	) {
-		
+
 		ArrayList<String> getCodes=new ArrayList<>();
 
 			JSONArray jsonArray=JSONArray.fromObject(codes);
@@ -121,7 +150,7 @@ public class CustomerController {
 				String code=(String)obj;
 				getCodes.add(code);
 			}
-	
+
 			systemService.modifyApprovalStatus(getCodes,status);
 
 	}

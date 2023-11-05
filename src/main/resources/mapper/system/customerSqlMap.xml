@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-        
+
 	<mapper namespace="kr.co.seoulit.account.operate.system.mapper.CustomerMapper">
-    
-    
+
+
     <resultMap id="workplaceResult" type="kr.co.seoulit.account.operate.system.to.WorkplaceBean">
         <result property="workplaceCode" column="WORKPLACE_CODE"/>
         <result property="companyCode" column="COMPANY_CODE"/>
@@ -44,13 +44,37 @@
         <result property="financialInstituteName" column="FINANCIAL_INSTITUTE_CODE"/>
         <result property="financialInstituteCode" column="FINANCIAL_INSTITUTE_NAME"/>
     </resultMap>
- 
+
     <select id="selectCustomerList" resultMap="customerResult">
         SELECT *
         FROM CUSTOMER
-        WHERE CUSTOMER_TYPE = '일반'
     </select>
 
+    <delete id="deleteCustomer"  parameterType="kr.co.seoulit.account.operate.system.to.CustomerBean">
+        <![CDATA[
+        DELETE
+        FROM CUSTOMER
+        WHERE CUSTOMER_CODE = #{customerCode}
+        ]]>
+    </delete>
+
+    <insert id="insertCustomer" parameterType="kr.co.seoulit.account.operate.system.to.CustomerBean">
+        <![CDATA[
+        INSERT
+        INTO CUSTOMER (CUSTOMER_CODE, CUSTOMER_NAME, CUSTOMER_TEL_NUMBER, BUSINESS_LICENSE_NUMBER, CUSTOMER_BUSINESS_CONDITIONS)
+        VALUES (#{customerCode}, #{customerName}, #{customerTelNumber}, #{businessLicenseNumber}, #{customerBusinessConditions})
+        ]]>
+    </insert>
+
+    <update id="updateCustomer"
+            parameterType="kr.co.seoulit.account.operate.system.to.CustomerBean">
+        UPDATE CUSTOMER
+        SET CUSTOMER_NAME = #{customerName},
+            CUSTOMER_TEL_NUMBER = #{customerTelNumber},
+            BUSINESS_LICENSE_NUMBER = #{businessLicenseNumber},
+            CUSTOMER_BUSINESS_CONDITIONS = #{customerBusinessConditions}
+        WHERE CUSTOMER_CODE = #{customerCode}
+    </update>
 
    <select id="selectWorkplace" parameterType="String" resultType="kr.co.seoulit.account.operate.system.to.WorkplaceBean">
    <![CDATA[
@@ -66,7 +90,7 @@
               WORKPLACE_FAX_NUMBER          as workplaceFaxNumber,
               WORKPLACE_BASIC_ADDRESS       as workplaceBasicAddress,
               APPROVAL_STATUS             as approvalStatus,
-      FROM    WORKPLACE 
+      FROM    WORKPLACE
       WHERE    WORKPLACE_CODE= #{workplaceCode}
    ]]>
    </select>
@@ -81,13 +105,13 @@
 
    <insert id="insertWorkplace" parameterType="kr.co.seoulit.account.operate.system.to.WorkplaceBean">
    <![CDATA[
-      INSERT 
+      INSERT
       INTO WORKPLACE  (WORKPLACE_CODE, COMPANY_CODE, WORKPLACE_NAME, BUSINESS_LICENSE_NUMBER,
                    CORPORATION_LICENSE_NUMBER, WORKPLACE_CEO_NAME, WORKPLACE_BUSINESS_CONDITIONS,
                    WORKPLACE_BUSINESS_ITEMS, WORKPLACE_TEL_NUMBER, WORKPLACE_FAX_NUMBER,
                    WORKPLACE_BASIC_ADDRESS, APPROVAL_STATUS)
-      VALUES         (#{workplaceCode}, #{companyCode}, #{workplaceName}, #{businessLicense}, 
-                   #{corporationLicence}, #{workplaceCeoName}, #{businessConditions}, #{businessItems}, 
+      VALUES         (#{workplaceCode}, #{companyCode}, #{workplaceName}, #{businessLicense},
+                   #{corporationLicence}, #{workplaceCeoName}, #{businessConditions}, #{businessItems},
                    #{workplaceTelNumber}, #{workplaceFaxNumber}, #{workplaceBasicAddress}, #{approvalStatus})
    ]]>
    </insert>
@@ -107,26 +131,26 @@
               WORKPLACE_FAX_NUMBER          as workplaceFaxNumber,
               WORKPLACE_BASIC_ADDRESS       as workplaceBasicAddress,
               APPROVAL_STATUS             as approvalStatus
-      FROM    WORKPLACE 
+      FROM    WORKPLACE
      ]]>
     </select>
-    
-    
+
+
     <update id="updateWorkplaceAccount" parameterType="Map" >
     <![CDATA[
-       UPDATE    WORKPLACE 
+       UPDATE    WORKPLACE
        SET    APPROVAL_STATUS = #{status}
        WHERE    WORKPLACE_CODE = #{code}
     ]]>
     </update>
-    
-    
+
+
     <delete id="deleteWorkplace" parameterType="kr.co.seoulit.account.operate.system.to.WorkplaceBean">
     <![CDATA[
-       DELETE 
-       FROM    WORKPLACE 
+       DELETE
+       FROM    WORKPLACE
        WHERE    WORKPLACE_CODE = #{code}
     ]]>
     </delete>
-    
+
 </mapper>
