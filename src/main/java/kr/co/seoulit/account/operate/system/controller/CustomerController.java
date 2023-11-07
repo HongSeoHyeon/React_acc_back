@@ -57,6 +57,7 @@ public class CustomerController {
 	public ArrayList<CustomerBean> getCustomerList(){
 		ArrayList<CustomerBean> accountCustomerList = systemService.getCustomerList();
 		System.out.println("메롱메롱");
+		System.out.println("화났대요");
 		return accountCustomerList;
 	}
 
