@@ -56,6 +56,7 @@ public class CustomerController {
 	@GetMapping("/customers")
 	public ArrayList<CustomerBean> getCustomerList(){
 		ArrayList<CustomerBean> accountCustomerList = systemService.getCustomerList();
+		System.out.println("메롱메롱");
 		return accountCustomerList;
 	}
 
